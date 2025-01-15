@@ -1,0 +1,234 @@
+/* Container principale */
+.payment-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  background: white;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  touch-action: none;
+  will-change: transform;
+  z-index: 1000;
+}
+
+.payment-container.fullscreen {
+  height: 100vh;
+  border-radius: 0;
+}
+
+.drag-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+}
+
+.drag-indicator {
+  width: 40px;
+  height: 4px;
+  background-color: #E2E8F0;
+  border-radius: 2px;
+}
+
+/* Animazione per la transizione fullscreen */
+.payment-container {
+  transition: all 0.3s ease-out;
+}
+
+/* Media query per gestire l'altezza su diversi dispositivi */
+@media (max-height: 667px) {
+  .payment-container {
+    height: 70vh;
+  }
+}
+
+/* Stili per il contenuto interno quando è fullscreen */
+.payment-container.fullscreen .content-wrapper {
+  height: calc(100vh - 24px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Nascondi la drag indicator quando è fullscreen */
+.payment-container.fullscreen .drag-indicator {
+  opacity: 0.5;
+}
+
+/* Stili per i metodi di pagamento */
+.payment-methods-container {
+  margin-bottom: 24px;
+}
+
+.saved-cards-section {
+  margin-bottom: 16px;
+}
+
+.saved-card-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saved-card-item:hover {
+  border-color: #cbd5e0;
+  background-color: #f7fafc;
+}
+
+.saved-card-item.selected {
+  border-color: #4299e1;
+  background-color: #ebf8ff;
+}
+
+/* Digital Wallets */
+.digital-wallets-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.wallet-button {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wallet-button:hover {
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+.wallet-button img {
+  height: 24px;
+  width: auto;
+}
+
+/* Form della carta di credito */
+.credit-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  position: relative;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.card-input,
+.expiry-input,
+.cvv-input,
+.holder-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.card-input:focus,
+.expiry-input:focus,
+.cvv-input:focus,
+.holder-input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.invalid {
+  border-color: #f56565;
+}
+
+.card-type-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  width: auto;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #3182ce;
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3182ce;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+  padding: 12px;
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 8px;
+  color: #c53030;
+  margin-bottom: 16px;
+} 
